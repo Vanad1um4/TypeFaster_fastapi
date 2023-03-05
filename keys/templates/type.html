@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='type.css') }}">
+{% endblock css %}
+
+
+{% block info %}
+    <div class="announcements">
+        <div class="stats" style="display: none;">
+            <div class="cpm">{{ data.cpm|safe }} cpm</div>
+            <div class="wpm">{{ data.wpm|safe }} wpm</div>
+            <div class="acc">{{ data.acc|safe }}% accuracy</div>
+        </div>
+        <div class="halt" style="display: none;">...minus 5 seconds. Countdown paused. Continue typing to resume.</div>
+        <div class="done" style="display: none;">Completed. Hit [Enter] to go to the next text or [Backspace] to return to library.</div>
+    </div>
+{% endblock info %}
+
+
+{% block content %}
+
+    <div class="wait-modal">
+        <div class="wait-message">- 5 seconds. Countdown paused. Continue typing to resume.</div>
+    </div>
+
+    <div class="complete-modal hidden">
+        <div class="complete-content">
+            <div class="complete-header">
+                <div>Completed</div>
+            </div>
+            <div class="complete-body">
+                <div class="complete-text">Hit 'Enter' to begin next text</div>
+                <div class="complete-text">or 'Backspace' to return to library</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-text"></div>
+
+    {# {{ data|json_script:'data' }} #}
+    <script id='data' type='application/json'>{{ data|safe }}</script>
+    <script id='data' type='application/json'>{{ options|safe }}</script>
+
+{% endblock content %}
+
+
+{% block js %}
+    {# <script src="{% static 'main/type.js' %}" defer></script> #}
+    <script src="{{ url_for('static', path='type.js') }}" defer></script>
+{% endblock js %}

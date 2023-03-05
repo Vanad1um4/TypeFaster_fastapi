@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='library.css') }}">
+{% endblock css %}
+
+{% block info %}
+    <div class="container-info">
+        <div class="book-list-info">
+            👇 Select a book, then...
+        </div>
+        <div class="text-list-info">
+            👇 Select a chapter and a text to type.
+        </div>
+    </div>
+{% endblock info %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="book-list">
+        </div>
+
+        <div class="text-list">
+            <div class="new-book hidden">
+                <div class="cont">
+                    <div class="header">Название:</div>
+                    <input class="name new-book-input"></input>
+                    <button class="btn add new-book-btn-add">ADD</button>
+                    <button class="btn cancel new-book-btn-cancel">Cancel</button>
+                </div>
+            </div>
+
+            <div class="book hidden">
+                <div class="cont">
+                    <div class="header book-name"></div>
+                    {# <input class="name hidden book-rename-input"></input> #}
+                    <input class="name hidden book-rename-input" placeholder='Type new name. Saves automatically after 3 sec.'></input>
+                    <button class="btn rename book-btn-rename"> 🏷️ </button>
+                    <button class="btn delete book-btn-delete"> 🚮 </button>
+                    <button class="btn yes-delete book-btn-yes-delete hidden">YES, DELETE</button>
+                </div>
+            </div>
+
+            <div class="loading hidden"> <img src="{{ url_for('static', path='loading.gif') }}" width="25px" height="25px"> </div>
+
+            <div class="texts texts-cont">
+            </div>
+
+            <div class="add-text">
+                <div class="cont add-text-main-cont hidden">
+                    <div class="add add-text-plus">+ add text...</div>
+                    <div class="cont add-text-input-cont hidden">
+                        <input class="chapter add-chapter-input" placeholder='Type chapter name...'></input>
+                        <textarea class="text add-text-input" placeholder='Paste text here. Saves automatically after 3 sec.'></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id='books' type='application/json'>{{ books|safe }}</script>
+
+{% endblock content %}
+
+{% block js %}
+    <script src="{{ url_for('static', path='library.js') }}" defer></script>
+{% endblock js %}
+

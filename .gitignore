@@ -1,0 +1,7 @@
+__pycache__/
+.vscode/
+*.pyc
+.env
+test.py
+nohup.out
+

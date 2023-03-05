@@ -1,0 +1,268 @@
+:root {
+    --gtc1: 24px;
+    --gtc2: 1fr;
+    --gtc3: 80px;
+    --gtc4: 74px;
+    --gtc5: 74px;
+    --gtc6: 36px;
+    --gtc7: max-content;
+}
+.hidden {
+    display: none;
+}
+
+h2 {
+    margin: 7px;
+    text-align: center;
+}
+
+.container-info {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    /* font-weight: bold; */
+    user-select: none;
+    font-size: 18px;
+}
+.container-info .book-list-info { padding-left: 13px }
+.container-info .text-list-info { padding-left: 25px }
+
+body.light .container-info .book-list-info { color: var(--grey7) }
+body.light .container-info .text-list-info { color: var(--grey7) }
+body.night .container-info .book-list-info { color: var(--grey4) }
+body.night .container-info .text-list-info { color: var(--grey4) }
+
+
+
+.container {
+    display: grid;
+    grid-template-columns: 35% 65%;
+}
+.container > .book-list {
+}
+
+.container > .book-list > .book-cont {
+    border-radius: 3px;
+    margin-bottom: 5px;
+    padding: 5px 5px;
+    height: 40px;
+    position: relative;
+    bottom: 0px;
+    transition: 0.1s;
+
+    display: flex;
+    align-items: center;
+}
+body.light .container > .book-list > .book-cont { background-color: var(--grey2) }
+body.night .container > .book-list > .book-cont { background-color: var(--grey7) }
+
+body.light .container > .book-list > .book-cont { color: var(--grey7); }
+body.night .container > .book-list > .book-cont { color: var(--grey2); }
+
+.container > .book-list > .book-cont-add {
+}
+
+.container > .book-list > .book-cont > .book-name, .book-plus {
+    font-weight: 700;
+    font-size: 20px;
+    pointer-events: none;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.container > .book-list > .book-cont > .book-plus {
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+}
+
+.container > .book-list > .book-cont-add:hover {
+}
+.container > .book-list > .hoverable:hover {
+    cursor: pointer;
+    left: 5px;
+}
+body.light .container > .book-list > .hoverable:hover {
+    color: var(--grey8);
+    background-color: var(--grey3);
+}
+body.night .container > .book-list > .hoverable:hover {
+    color: var(--white);
+    background-color: var(--grey6);
+}
+
+
+
+
+.container > .text-list {
+    margin-left: 10px;
+}
+.container > .text-list > .new-book > .cont {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.container > .text-list > .new-book > .cont > * {
+    font-weight: 700;
+    font-size: 20px;
+}
+.container > .text-list > .new-book > .cont > .name {
+    flex-grow: 1;
+}
+
+
+
+
+
+
+.container > .text-list > .book > .cont {
+    border-radius: 3px;
+    margin-bottom: 5px;
+    padding: 5px 5px;
+}
+body.light .text-list .book .cont { background-color: var(--grey2) }
+
+body.night .text-list .book .cont { background-color: var(--grey7) }
+
+.container > .text-list > .book > .cont {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.container > .text-list > .book > .cont > * {
+    font-weight: 700;
+    font-size: 20px;
+}
+.container > .text-list > .book > .cont > .header {
+    flex-grow: 1;
+    overflow: hidden;
+}
+.container > .text-list > .book > .cont > .name {
+    flex-grow: 1;
+}
+.container > .text-list > .book > .cont > .btn {
+    white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+.container > .text-list > .loading {
+    border-radius: 3px;
+    margin-bottom: 5px;
+    padding: 5px 5px;
+    text-align: center;
+}
+body.light .text-list .loading { background-color: var(--grey2) }
+body.night .text-list .loading { background-color: var(--grey7) }
+
+
+
+
+
+
+
+
+.container > .text-list > .texts {
+}
+.container > .text-list > .texts > .chapter-cont {
+}
+.container > .text-list > .texts > .chapter-cont > .chapter-head-cont {
+    display: grid;
+    grid-template-columns: var(--gtc1) var(--gtc2) var(--gtc3) var(--gtc4) var(--gtc5) var(--gtc6) var(--gtc7);
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    padding: 5px 5px;
+}
+body.light .text-list > .texts > .chapter-cont > .chapter-head-cont { background-color: var(--grey2) }
+body.night .text-list > .texts > .chapter-cont > .chapter-head-cont { background-color: var(--grey7) }
+
+.container > .text-list > .texts > .chapter-cont > .chapter-head-cont > .chapter-name {
+    flex-grow: 1;
+    pointer-events: none;
+    font-style: oblique;
+}
+.container > .text-list > .texts > .chapter-cont > .chapter-head-cont > .chapter-done {
+    pointer-events: none;
+}
+
+
+
+
+
+.container > .text-list > .texts > .chapter-cont > .chapter-text-cont-hide {
+    cursor: pointer;
+}
+.container > .text-list > .texts > .chapter-cont > .chapter-text-cont-hide > .chapter-text-cont {
+    display: grid;
+    grid-template-columns: var(--gtc1) var(--gtc2) var(--gtc3) var(--gtc4) var(--gtc5) var(--gtc6) var(--gtc7);
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    padding: 5px 5px;
+}
+body.light .container > .text-list > .texts > .chapter-cont > .chapter-text-cont-hide > .chapter-text-cont { background-color: var(--grey2) }
+body.night .container > .text-list > .texts > .chapter-cont > .chapter-text-cont-hide > .chapter-text-cont { background-color: var(--grey6) }
+
+.container > .text-list > .texts > .chapter-cont > .chapter-text-cont-hide > .chapter-text-cont > .chapter-text-text {
+    flex-grow: 1;
+    pointer-events: none;
+}
+.container > .text-list > .texts > .chapter-cont > .chapter-text-cont-hide > .chapter-text-cont > .chapter-text-done {
+    pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+.container > .text-list > .add-text > .cont {
+    border-radius: 3px;
+    margin-bottom: 5px;
+    padding: 5px 5px;
+}
+body.light .text-list > .add-text > .cont { background-color: var(--grey2) }
+body.night .text-list > .add-text > .cont { background-color: var(--grey7) }
+
+.container > .text-list > .add-text > .cont {
+}
+.container > .text-list > .add-text > .cont > .add {
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+}
+.container > .text-list > .add-text > .cont > .cont {
+}
+.container > .text-list > .add-text > .cont > .cont > .add-chapter-input {
+    width: 98%;
+    margin-bottom: 5px;
+}
+.container > .text-list > .add-text > .cont > .cont > .add-text-input {
+    width: 98%;
+}
+
+
+
+
+

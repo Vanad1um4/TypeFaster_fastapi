@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Hyper-typer</title>
+        {# <link rel="stylesheet" type="text/css" href="{% static 'main/base.css' %}"> #}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='base.css') }}">
+        {# <link rel="shortcut icon" type="image/png" href="{% static 'main/favicon.ico' %}"/> #}
+        <link rel="shortcut icon" type="image/png" href="{{ url_for('static', path='favicon.ico') }}"/>
+
+        {% block css %}{% endblock css %}
+
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header outer-box">
+                <div class="menu inner-box">
+                    <div class="books menu-button {% if 'library' in request.path %}primary-url{% else %}secondary-url{% endif %}">
+                        <a class="a-btn" href="{{ url_for('show_library_page') }}">My library</a>
+                    </div>
+                    <div class="type menu-button {% if 'type' in request.path %}primary-url{% else %}secondary-url{% endif %}">
+                        <a class="a-btn" href="">Type</a>
+                    </div>
+                    <div class="stats menu-button {% if 'stats' in request.path %}primary-url{% else %}secondary-url{% endif %}">
+                        <a class="a-btn" href="">Statistics</a>
+                    </div>
+                    <div class="home menu-button-divider"></div>
+                    <div class="stats menu-button secondary-url options-drop-down">
+                        <a class="a-btn">Options</a>
+                        <div class="options-content-hide">
+                            <div class="options-content-grid">
+                                <div class="text dark-mode-text">Dark theme</div>
+                                <input type="checkbox" class="checkbox dark-mode-checkbox">
+                                <div class="text width-text">Main width</div>
+                                <input type="text" class="input-field width-input" title="800 - 1800"/>
+                                <button type="submit" class="width-save">💾</button>
+                                <div class="text show-stats-bar-text">Show stats bar</div>
+                                <input type="checkbox" class="checkbox show-stats-bar-checkbox">
+                                <div class="text show-errors-text">Show errors</div>
+                                <input type="checkbox" class="checkbox show-errors-checkbox">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-block outer-box">
+                {% block info %}{% endblock info %}
+            </div>
+
+            <div class="content outer-box">
+                {% block content %}{% endblock content %}
+                <script id='options' type='application/json'>{{ options|safe }}</script>
+            </div>
+
+        </div>
+
+        <script src="{{ url_for('static', path='base.js') }}" defer></script>
+
+        {% block js %}{% endblock js %}
+
+    </body>
+</html>
+
+{# <script id='data' type='application/json'>{{ data|safe }}</script> #}
+{# <script src='{{ url_for('static', path='index.js') }}' defer></script> #}

@@ -1,0 +1,248 @@
+body.night .outer-box { color: var(--grey4) }
+
+/* === MODAL CONFIRM WINDOW ================================================ */
+
+.confirm-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 150px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.7);
+}
+.confirm-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: min-content;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.2s;
+    white-space: nowrap;
+}
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0px; opacity:1}
+}
+.confirm-header {
+    padding: 2px 16px;
+    font-size: 200%;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+}
+.confirm-body > .confirm-text {
+    padding: 2px 16px;
+    font-size: 150%;
+}
+.confirm-btns > .confirm-yes, .confirm-no {
+    display: inline-block;
+    padding: 2px 22px;
+    font-size: 200%;
+    font-weight: bold;
+    cursor: pointer;
+}
+.confirm-btns > .confirm-yes {
+    background-color: #5cb85c;
+}
+.confirm-btns > .confirm-no {
+    background-color: red;
+    color: white;
+}
+
+
+/* === MODAL WAITING WINDOW ================================================ */
+
+.wait-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 0px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.7);
+}
+.wait-message {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 200%;
+    font-weight: bold;
+    margin: auto;
+    padding: 0;
+    width: min-content;
+    height: 100%;
+    animation-name: animateappear;
+    animation-duration: 0.5s;
+    white-space: nowrap;
+}
+@keyframes animateappear {
+  from {opacity:0}
+  to {opacity:1}
+}
+
+
+
+/* === MODAL COMPLETE WINDOW =============================================== */
+
+.hidden {
+    display: none;
+}
+.complete-modal {
+    position: fixed;
+    z-index: 1;
+    padding-top: 150px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.7);
+}
+.complete-content {
+    position: relative;
+    background-color: #a4ffd5;
+    margin: auto;
+    padding: 10px;
+    width: min-content;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.2s;
+    white-space: nowrap;
+}
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0px; opacity:1}
+}
+.complete-header {
+    padding: 2px 16px;
+    font-size: 200%;
+    font-weight: bold;
+    color: #0e8b00;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.complete-body > .complete-text {
+    padding: 2px 16px;
+    font-size: 150%;
+    font-weight: bold;
+    color: #0e8b00;
+}
+
+
+
+
+
+/* === ANNOUNCEMENT SETTINGS =============================================== */
+
+.announcements {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 8px;
+    color: var(--grey8)
+}
+
+body.light .announcements { color: var(--grey7) }
+body.night .announcements { color: var(--grey4) }
+
+
+
+
+/* === HALT ANNOUNCEMENT =================================================== */
+
+.announcements .halt {
+    display: none;
+    font-weight: bold;
+    user-select: none;
+    font-size: 24px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 3px solid orange;
+}
+
+
+
+
+/* === DONE ANNOUNCEMENT =================================================== */
+
+.announcements .done {
+    display: none;
+    font-weight: bold;
+    user-select: none;
+    font-size: 24px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 3px solid green;
+}
+
+
+
+
+
+/* === ACTUAL TYPING ======================================================= */
+
+.stats .cpm, .wpm, .acc {
+    display: inline-block;
+    font-weight: bold;
+    user-select: none;
+    font-size: 200%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.main-text > .paragraph {
+    /* font-family: Courier; */
+    font-family: monospace;
+    font-weight: bold;
+    user-select: none;
+    font-size: 200%;
+    padding: 7px 15px;
+    cursor: text;
+}
+
+body.light.show-errors .wrong { background-color: red }
+body.light.show-errors .wrong { color: white }
+body.light.show-errors .right { color: #9bb59b }
+body.light.show-errors .corrected { color: #cbb5b5 }
+body.light.show-errors .current { background-color: var(--black) }
+body.light.show-errors .current { color: var(--white) }
+body.light.show-errors .neutral { background-color: var(--grey1) }
+body.light.show-errors .neutral { color: var(--grey7) }
+
+body.light.not-show-errors .wrong { background-color: red }
+body.light.not-show-errors .wrong { color: white }
+body.light.not-show-errors .right { color: var(--grey3) }
+body.light.not-show-errors .corrected { color: var(--grey3) }
+body.light.not-show-errors .current { background-color: var(--black) }
+body.light.not-show-errors .current { color: var(--white) }
+body.light.not-show-errors .neutral { background-color: var(--grey1) }
+body.light.not-show-errors .neutral { color: var(--grey7) }
+
+body.night.show-errors .wrong { background-color: #a12d2d }
+body.night.show-errors .wrong { color: white }
+body.night.show-errors .right { color: #506a50 }
+body.night.show-errors .corrected { color: #6e5656 }
+body.night.show-errors .current { background-color: var(--white) }
+body.night.show-errors .current { color: var(--black) }
+body.night.show-errors .neutral { background-color: var(--grey8) }
+body.night.show-errors .neutral { color: var(--grey4) }
+
+body.night.not-show-errors .wrong { background-color: #a12d2d }
+body.night.not-show-errors .wrong { color: white }
+body.night.not-show-errors .right { color: var(--grey6) }
+body.night.not-show-errors .corrected { color: var(--grey6) }
+body.night.not-show-errors .current { background-color: var(--white) }
+body.night.not-show-errors .current { color: var(--black) }
+body.night.not-show-errors .neutral { background-color: var(--grey8) }
+body.night.not-show-errors .neutral { color: var(--grey4) }
