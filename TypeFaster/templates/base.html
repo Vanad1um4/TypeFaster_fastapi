@@ -4,10 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Hyper-typer</title>
-        {# <link rel="stylesheet" type="text/css" href="{% static 'main/base.css' %}"> #}
+        <title>TypeFaster</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='base.css') }}">
-        {# <link rel="shortcut icon" type="image/png" href="{% static 'main/favicon.ico' %}"/> #}
         <link rel="shortcut icon" type="image/png" href="{{ url_for('static', path='favicon.ico') }}"/>
 
         {% block css %}{% endblock css %}
@@ -63,6 +61,3 @@
 
     </body>
 </html>
-
-{# <script id='data' type='application/json'>{{ data|safe }}</script> #}
-{# <script src='{{ url_for('static', path='index.js') }}' defer></script> #}

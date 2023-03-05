@@ -130,13 +130,11 @@ def delete_text_by_chapter_str(text: TextChapter, db: Session = Depends(get_db))
 
 @app.post('/api-stats/return-stats/{text_id}/', status_code=status.HTTP_204_NO_CONTENT)
 def return_stats(text_id: int, stats: StatsReturn, db: Session = Depends(get_db)):
-    # def return_stats(text_id: int, stats: dict[Any, Any], db: Session = Depends(get_db)):
-    # print(text_id, stats)
-    logic.stats_prep_for_db_save(text_id, stats.dict(), db)
-
-    # texts_list = logic.texts_prep_before_writing_to_db(text.text)
-    # result = crud.batch_create_text(db, text.book_id, text.chapter, texts_list)
-    # return result
+    res = logic.stats_prep_for_db_save(text_id, stats.dict(), db)
+    if res is True:
+        return {'detail': 'Stats were saved successfully'}
+    if res is False:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Something's went wrong...")
 
 
 ### TEMPLATES ROUTES ##########################################################

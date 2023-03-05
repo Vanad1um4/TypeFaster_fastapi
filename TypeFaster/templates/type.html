@@ -38,7 +38,6 @@
 
     <div class="main-text"></div>
 
-    {# {{ data|json_script:'data' }} #}
     <script id='data' type='application/json'>{{ data|safe }}</script>
     <script id='data' type='application/json'>{{ options|safe }}</script>
 
@@ -46,6 +45,5 @@
 
 
 {% block js %}
-    {# <script src="{% static 'main/type.js' %}" defer></script> #}
     <script src="{{ url_for('static', path='type.js') }}" defer></script>
 {% endblock js %}

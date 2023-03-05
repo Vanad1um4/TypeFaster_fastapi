@@ -6,11 +6,9 @@ const doneAnnouncement = document.querySelector('.done')
 const optionsWidthInput = document.querySelector('.width-input')
 
 const data = JSON.parse(document.getElementById('data').textContent)
-// console.log(data)
 let statsDB = {}
 const [charCount, wordCount, charsPerWord, text_id, complete, nextTextId] = textConstruct(data)
 // console.log(charCount, wordCount, charsPerWord, text_id, complete, nextTextId)
-// const strokes = `'""«»’`
 const strokes = `'‘’`;
 const quotes = `"«»“”`;
 const dashes = '-–'
@@ -23,8 +21,6 @@ let timesMoreThanFiveSecs = 0
 let timeExclude = 0
 let timeoutID
 let pauseStartTime = 0
-// const charCount = tmpVar[0]
-// const wordCount = tmpVar[1]
 
 console.log(charCount, 'characters')
 console.log(wordCount, 'words')
@@ -35,10 +31,7 @@ onInit()
 function onInit() {
     hideParentIfChildrenAreHidden()
     document.addEventListener('keydown', function onPress(event) {
-    // console.log(pauseStartTime, timeExclude)
-        // event.preventDefault()
         const key = event.key
-        // console.log(key)
         if ((key === ` ` || key === `'` || key === '`' || key === `/`) && optionsWidthInput !== document.activeElement) {
             event.preventDefault()
         }
@@ -73,7 +66,6 @@ function onInit() {
 function keyPressedValidate(i, key) {
     statsDB['stats'][i]['time'] = Date.now()
     const syl = statsDB['stats'][i]['txt']
-    // console.log(syl)
     let span = document.querySelector(`span[id="n${i.toString()}"]`)
 
     if ((key === syl) ||
@@ -121,7 +113,6 @@ function sendStatsBack() {
     wpmDiv.innerText = wpm + ' wpm'
     accDiv.innerText = acc + '% accuracy'
 
-    // statsDB['complete'] = true
     statsDB['args'] = {}
     statsDB['args']['cpm'] = cpm
     statsDB['args']['wpm'] = wpm
@@ -130,15 +121,11 @@ function sendStatsBack() {
     statsDB['args']['words'] = wordCount
     statsDB['args']['errors'] = currErrors
     statsDB['args']['time'] = currTime
-    // console.log(statsDB)
 
     fetch(`/api-stats/return-stats/${text_id}/`,
     {
         method: 'POST',
-        // credentials: 'same-origin',
         headers: {
-            // 'X-Requested-With': 'XMLHttpRequest',  // Necessary to work with request.is_ajax()
-            // 'X-CSRFToken': csrftoken,
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
@@ -173,7 +160,6 @@ function showCompleteDialogue() {
 function forwardProp(i) {
     if (i < charCount-1) {
         let nextSpan = document.querySelector(`span[id="n${i+1}"]`)
-        // nextSpan.classList.remove('right', 'wrong', 'current', 'neutral')
         nextSpan.classList.remove('neutral')
         nextSpan.classList.add('current')
 
@@ -182,7 +168,6 @@ function forwardProp(i) {
 
         let spanYPercent = Math.floor((spanY / screenY) * 100)
 
-        // console.log(spanYPercent)
 
         if (spanYPercent > 75) {
             window.scrollBy({top: Math.floor(screenY/2), left: 0, behavior: 'smooth'});
@@ -198,13 +183,9 @@ function forwardProp(i) {
 
 function backwardProp(i) {
     let nextSpan = document.querySelector(`span[id="n${i}"]`)
-    // console.log(nextSpan)
-    // nextSpan.classList.remove('right', 'wrong', 'current', 'neutral')
     nextSpan.classList.remove('current')
     nextSpan.classList.add('neutral')
     let currSpan = document.querySelector(`span[id="n${i-1}"]`)
-    // console.log(nextSpan)
-    // currSpan.classList.remove('right', 'wrong', 'current', 'neutral')
     currSpan.classList.add('current')
 }
 
@@ -240,7 +221,6 @@ function textConstruct(data) {
     wpmDiv.innerText = data['wpm'] + ' wpm'
     accDiv.innerText = data['acc'] + '% accuracy'
     const text = data['text']
-    // console.log(text)
     const wordCount = text.split(' ').length;
     const charsPerWord = Math.round((text.length / wordCount) * 100) / 100
     const mainTextDiv = document.querySelector('div.main-text')
@@ -271,7 +251,6 @@ function textConstruct(data) {
         }
     }
     mainTextDiv.appendChild(newParagraph)
-    // console.log(statsDB)
     return [text.length, wordCount, charsPerWord, data['text_id'], data['complete'], data['next']]
 }
 
@@ -279,8 +258,6 @@ function textConstruct(data) {
 function hideParentIfChildrenAreHidden() {
     const parent = document.querySelector('.info-block')
     const children = document.querySelectorAll('.info-block > .announcements > div')
-    // console.log(parent)
-    // console.log(children)
     let hideParent = true;
     for(let i = 0; i < children.length; i++){
         if(children[i].style.display != "none"){

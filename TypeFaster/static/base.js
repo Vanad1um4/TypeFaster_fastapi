@@ -1,13 +1,9 @@
 const darkModeCheckbox = document.querySelector('.dark-mode-checkbox')
 const widthInputField = document.querySelector('.width-input')
-// console.log(widthInputField)
 const widthSaveBtn = document.querySelector('.width-save')
 const showStatsBarCheckbox = document.querySelector('.show-stats-bar-checkbox')
 const showErrorsCheckbox = document.querySelector('.show-errors-checkbox')
 const options = JSON.parse(document.getElementById('options').textContent)
-// console.log(options)
-
-// const csrftoken_options = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
 
 onInit()
 
@@ -16,7 +12,6 @@ function onInit() {
     darkModeCheckbox.checked = options['dark_mode']
     showErrorsCheckbox.checked = options['show_errors']
     showStatsBarCheckbox.checked = options['show_stats_bar']
-    // console.log(options['window_width'])
     widthInputField.value = options['window_width']
     setColorThemeCheckbox(darkModeCheckbox.checked)
     setWidthToCssAndInputField(options['window_width'])
@@ -47,7 +42,6 @@ function setOptions() {
         {
             method: 'PUT',
             headers: {
-                // 'X-CSRFToken': csrftoken_options,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
@@ -118,8 +112,6 @@ function hideParentIfChildrenAreHidden() {
     if (window.location.toString().includes("type")) {
         const parent = document.querySelector('.info-block')
         const children = document.querySelectorAll('.info-block > .announcements > div')
-        // console.log(parent)
-        // console.log(children)
         let hideParent = true;
         for(let i = 0; i < children.length; i++){
             if(children[i].style.display != "none"){

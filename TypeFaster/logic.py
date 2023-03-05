@@ -121,12 +121,6 @@ def text_prep_for_typing(db, text_id):
 
 
 def stats_prep_for_db_save(text_id, stats, db):
-    # print(stats)
-
-    # stats = json.dumps(json.loads(request.body))
-    # print(stats['stats'], stats['args'])
-    # result_old = db_save_stats(text_id, user_id, json.dumps(stats['stats']), json.dumps(stats['args']))
-
     first_time = stats['stats']['0']['time']
     result_list = []
     for i, letter in enumerate(stats['stats']):
@@ -139,6 +133,4 @@ def stats_prep_for_db_save(text_id, stats, db):
                                 first_time,
                                 stats['stats'][letter]['error']])
 
-    # print(result_list)
-    # print(stats['args'])
-    result_new = crud.save_stats(db, text_id, stats['args'], result_list)
+    return crud.save_stats(db, text_id, stats['args'], result_list)

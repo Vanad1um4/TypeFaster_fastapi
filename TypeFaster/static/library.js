@@ -23,7 +23,6 @@ const addTextInput = document.querySelector('.add-text-input')
 
 const books_data = JSON.parse(document.getElementById('books').textContent)
 let books_obj = {}
-// console.log(books_data)
 const wain1sec = 1000
 const wait3sec = 3000
 
@@ -415,7 +414,6 @@ function addNewBookBtn() {
 
 async function addNewBookBtnClicked() {
     const bookName = newBookInput.value
-    // console.log(bookName.length)
     if (bookName.length > 0 && bookName.length < 256) {
         fetch(`/api-books/add/`,
         {
